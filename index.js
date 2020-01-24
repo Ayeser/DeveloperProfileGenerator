@@ -22,7 +22,6 @@ inquirer
         }
     ])
     .then(function(response) {
-        const filename = response.username.toLowerCase().split(' ').join('') + ".pdf";
         console.log(response.username);
         console.log(response.colorChoice);
         });
