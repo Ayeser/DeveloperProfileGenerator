@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const https = require('https');
 
 inquirer
     .prompt([
@@ -20,12 +21,25 @@ inquirer
         const filename = response.username.toLowerCase().split(' ').join('') + ".pdf";
         console.log(response.username);
         console.log(response.colorChoice);
-        fs.writeFile(filename, JSON.stringify(response), err => {
-            if(err) {
-                console.log(err);
-              }
+
+        // https.get('https://api.github.com/users/' + response.username + "/repos", (resp) => {
+        //     let data = '';
+        //     resp.on('data', (chunk) => {
+        //         data += chunk;
+        //     });
+        //     resp.on('end', () => {
+        //         console.log(JSON.parse(data));
+        //     });
+        // }).on('error', (err) => {
+        //     console.log("Error: " + err.message);
+        // });
+
+        // fs.writeFile(filename, JSON.stringify(response), err => {
+        //     if(err) {
+        //         console.log(err);
+        //       }
             
-              console.log("Success!");
+        //       console.log("Success!");
             
-            })
+        //     })
         });
