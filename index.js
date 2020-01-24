@@ -1,6 +1,11 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const https = require('https');
+const axios = require("axios");
+const util = require("util");
+
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
+// exercise 34
 
 inquirer
     .prompt([
@@ -21,6 +26,10 @@ inquirer
         const filename = response.username.toLowerCase().split(' ').join('') + ".pdf";
         console.log(response.username);
         console.log(response.colorChoice);
+        let callName = "https://api.github.com/users/" + response.username;
+        axios
+            .get(callName)
+            .then(function)
 
         // https.get('https://api.github.com/users/' + response.username + "/repos", (resp) => {
         //     let data = '';
@@ -43,3 +52,4 @@ inquirer
             
         //     })
         });
+
