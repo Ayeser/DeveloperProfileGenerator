@@ -5,4 +5,4 @@ The generated profiles are found in the ./generatedProfile folder.
 
 Through node the user is prompted to give their Github username and color choice, the profile then includes profile picture, number of repos, followers, following, and stars. 
 
-(https://github.com/Ayeser/DeveloperProfileGenerator/blob/master/assets/ProfileGenerated.png?raw=true "Generated Profile Template")
+![Generated Profile Image](https://github.com/Ayeser/DeveloperProfileGenerator/blob/master/assets/ProfileGenerated.png?raw=true "Generated Profile Template")
