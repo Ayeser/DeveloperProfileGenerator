@@ -2,6 +2,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const axios = require("axios");
 const util = require("util");
+const phantom = require("phantom");
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -214,6 +215,16 @@ async function makeProfile() {
                                     return console.log(error);
                                 }
                                 console.log("Success!");
+                            })
+                            phantom.create().then(function(ph) {
+                              ph.createPage().then(function(page) {
+                                page.open("./generatedProfile/profile.html").then(function(status) {
+                                  page.gender('profile.pdf').then(function() {
+                                    console.log('PDF Rendered');
+                                    ph.exit();
+                                  });
+                                });
+                              });
                             })
                         });
                 });
