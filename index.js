@@ -1,3 +1,4 @@
+"use strict";
 const fs = require("fs");
 const inquirer = require("inquirer");
 const axios = require("axios");
@@ -8,7 +9,7 @@ const readFileAsync = util.promisify(fs.readFile);
 
 async function makeProfile() {
     try {
-        const generateHTML = await readFileAsync("generateHTML.js", "utf8");
+        // const generateHTML = await readFileAsync("generateHTML.js", "utf8");
             inquirer
                 .prompt([
                     {
@@ -215,16 +216,16 @@ async function makeProfile() {
                                     return console.log(error);
                                 }
                                 console.log("Success!");
-                            })
-                            phantom.create().then(function(ph) {
-                              ph.createPage().then(function(page) {
-                                page.open("./generatedProfile/profile.html").then(function(status) {
-                                  page.gender('profile.pdf').then(function() {
-                                    console.log('PDF Rendered');
-                                    ph.exit();
+                                phantom.create().then(function(ph) {
+                                  ph.createPage().then(function(page) {
+                                    page.open("./generatedProfile/profile.html").then(function(status) {
+                                      page.render('./generatedProfile/profile.pdf').then(function() {
+                                        console.log('PDF Rendered');
+                                        ph.exit();
+                                      });
+                                    });
                                   });
-                                });
-                              });
+                                })
                             })
                         });
                 });
