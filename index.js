@@ -3,7 +3,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const axios = require("axios");
 const util = require("util");
-const phantom = require("phantom");
+const open = require('open');
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -216,16 +216,15 @@ async function makeProfile() {
                                     return console.log(error);
                                 }
                                 console.log("Success!");
-                                phantom.create().then(function(ph) {
-                                  ph.createPage().then(function(page) {
-                                    page.open("./generatedProfile/profile.html").then(function(status) {
-                                      page.render('./generatedProfile/profile.pdf').then(function() {
-                                        console.log('PDF Rendered');
-                                        ph.exit();
-                                      });
-                                    });
-                                  });
-                                })
+                                open('./generatedProfile/profile.html', function() {
+                                  fs.writeFile("./generatedProfile/profile.pdf", "./generatedProfile/profile.html", function (error, data) {
+                                    if(error) {
+                                      return console.log(error);
+                                    } else {
+                                      console.log("PDF rendered");
+                                    }
+                                });
+                                });
                             })
                         });
                 });
