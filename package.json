@@ -24,6 +24,8 @@
     "phantom": "^6.3.0",
     "phantom-html-to-pdf": "^0.6.0",
     "uuid": "^3.4.0",
-    "webpage": "^0.3.0"
+    "webpage": "^0.3.0",
+    "cryptiles": ">=4.1.2",
+    "hoek": ">=4.2.1"
   }
 }
