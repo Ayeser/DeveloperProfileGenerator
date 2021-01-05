@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Ayeser/DeveloperProfileGenerator#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "html-to-pdf": "^0.1.11",
     "inquirer": "^7.0.3",
     "open": "^7.0.0",
